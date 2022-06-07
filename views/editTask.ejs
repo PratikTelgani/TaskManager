@@ -1,0 +1,56 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+            <form class="single-task-form", method="POST">
+        <h4>Edit Task</h4>
+        <div class="form-control">
+          <label for="name">TaskID: </label>
+          <input type="text" name="name" class="task-edit-name" value="<%= task._id%>" readonly/>
+        </div>
+        <div class="form-control">
+          <label for="name">Name: </label>
+          <input type="text" name="name" class="task-edit-name" placeholder="<%= task.task%>"/>
+        </div>
+
+        <% if (task.completed) { %>
+          <div class="form-control">
+            <label for="completed">Completed</label>
+            <input type="checkbox" name="completed" class="task-edit-completed" checked/>
+          </div>
+        
+          <div class="form-control">
+          <label for="completed">Delete</label>
+          <input type="checkbox" name="delete" class="task-edit-completed"/>
+        </div><br>
+        <button type="submit" class="btn btn-success btn-block">
+          Delete Task
+        </button>
+        <% } %>
+
+        <% if (!task.completed) { %>
+          <div class="form-control">
+            <label for="completed">Completed</label>
+            <input type="checkbox" name="completed" class="task-edit-completed"/>
+          </div>
+          <div class="form-control">
+            <label for="completed">Delete</label>
+            <input type="checkbox" name="delete" class="task-edit-completed"/>
+          </div><br>
+          <button type="submit" class="btn btn-success btn-block">
+            Update Task
+          </button>
+          <% } %>
+        <hr>
+      <a href="/" class="btn back-link">Back to Tasks</a>
+    </div>
+    <!-- axios -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </div>
+</div>
+</div>
+

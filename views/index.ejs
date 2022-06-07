@@ -1,0 +1,62 @@
+<style>
+  #cbox {
+  color:black;
+  text-decoration: line-through;
+}
+</style>
+
+<div class="row mt-5">
+  <div class="col-md-4 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        <i class="fa-solid fa-list-check"></i> Task Manager
+      </h1>
+      <%- include('./partials/messages') %>
+      <form action="/" method="POST">
+        <div class="form-group">
+          <input
+            type="text"
+            id="task"
+            name="task"
+            class="form-control"
+            placeholder="e.g. Call John"
+            value="<%= typeof name != 'undefined' ? name : '' %>"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-success btn-block">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-md-4 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        <i class="fa-solid fa-list-check"></i>Tasks
+      </h1>
+      <ul>
+          <% if(task.length){
+            for(var i = 0; i< task.length; i++) {%> 
+              <% if (!task[i].completed) { %>
+                <li class="list-group-item border-0 d-flex align-items-center ps-0">
+                  <a href="/<%= task[i]._id%>" ><%= task[i].task%></a>
+                </li>
+              <% } %>
+
+              <% if (task[i].completed) { %>
+                <li class="list-group-item border-0 d-flex align-items-center ps-0">
+                  <a href="/<%= task[i]._id%>" ><p id="cbox" for="cbox3"><%= task[i].task%></p></a>
+                </li>
+              <% } %>
+              
+            <% }      
+             }else{ %>
+                    <h3>No Task</h3>
+              <% } %>
+      </ul>
+    </div>
+  </div>
+</div>
